@@ -1,23 +1,39 @@
-/// Task Priority enum
-enum Priority { high, medium, low }
+// ============================================================
+// Priority
+// ============================================================
 
-/// Task Status enum
-enum TaskStatus { 
-  neu,        // جديد
-  inProgress, // قيد العمل
-  completed   // منتهي
+enum Priority {
+  high,
+  medium,
+  low,
 }
 
-/// User Role enum
-enum UserRole { 
-  manager, 
-  developer, 
-  designer, 
-  tester, 
-  analyst 
+// ============================================================
+// Task Status
+// ============================================================
+
+enum TaskStatus {
+  neu,
+  inProgress,
+  completed,
 }
 
-/// Project Model
+// ============================================================
+// User Role
+// ============================================================
+
+enum UserRole {
+  manager,
+  developer,
+  designer,
+  tester,
+  analyst,
+}
+
+// ============================================================
+// Project Model
+// ============================================================
+
 class Project {
   final String id;
   final String name;
@@ -39,7 +55,7 @@ class Project {
     this.members = const [],
   });
 
-  copyWith({
+  Project copyWith({
     String? id,
     String? name,
     String? description,
@@ -62,22 +78,36 @@ class Project {
   }
 }
 
-/// Task Model with Hierarchical Structure
+// ============================================================
+// Task Model
+// ============================================================
+
 class Task {
   final String id;
   final String projectId;
   final String title;
   final String description;
+
   final Priority priority;
   final TaskStatus status;
+
   final DateTime dueDate;
-  final String assignedTo; // User ID
+
+  final String assignedTo;
+
   final DateTime createdAt;
   final DateTime updatedAt;
+
+  // المهام الفرعية
   final List<Task> subtasks;
+
+  // ID الخاص بالمهمة الأب
   final String? parentId;
+
   final double estimatedHours;
   final double actualHours;
+
+  // سجل تغيرات الحالة
   final List<StatusChange> statusHistory;
 
   Task({
@@ -98,7 +128,7 @@ class Task {
     this.statusHistory = const [],
   });
 
-  copyWith({
+  Task copyWith({
     String? id,
     String? projectId,
     String? title,
@@ -135,12 +165,15 @@ class Task {
   }
 }
 
-/// Status Change Tracking
+// ============================================================
+// Status Change
+// ============================================================
+
 class StatusChange {
   final TaskStatus from;
   final TaskStatus to;
   final DateTime changedAt;
-  final String changedBy; // User ID
+  final String changedBy;
 
   StatusChange({
     required this.from,
@@ -150,7 +183,10 @@ class StatusChange {
   });
 }
 
-/// Team Member Model
+// ============================================================
+// Team Member
+// ============================================================
+
 class TeamMember {
   final String id;
   final String name;
@@ -168,7 +204,7 @@ class TeamMember {
     this.tasksCompleted = 0,
   });
 
-  copyWith({
+  TeamMember copyWith({
     String? id,
     String? name,
     String? email,
@@ -187,15 +223,23 @@ class TeamMember {
   }
 }
 
-/// Project Statistics
+// ============================================================
+// Project Statistics
+// ============================================================
+
 class ProjectStats {
   final int totalTasks;
   final int completedTasks;
+
   final double completionPercentage;
+
   final double totalEstimatedHours;
   final double totalActualHours;
+
   final Map<Priority, int> tasksByPriority;
+
   final Map<TaskStatus, int> tasksByStatus;
+
   final List<MemberStat> memberStats;
 
   ProjectStats({
@@ -210,13 +254,19 @@ class ProjectStats {
   });
 }
 
-/// Member Statistics
+// ============================================================
+// Member Statistics
+// ============================================================
+
 class MemberStat {
   final String memberId;
   final String memberName;
+
   final int tasksAssigned;
   final int tasksCompleted;
+
   final double completionRate;
+
   final double estimatedHours;
   final double actualHours;
 
