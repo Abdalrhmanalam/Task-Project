@@ -1,20 +1,98 @@
-<<<<<<< HEAD
-# task_project
+# نظام إدارة المهام | Task Management System
 
-A new Flutter project.
+نظام إدارة مشاريع متقدم مبني على **Flutter** مع تطبيق خوارزميات متقدمة لحل مشاكل إدارية واقعية.
 
-## Getting Started
+## الميزات الرئيسية
 
-This project is a starting point for a Flutter application.
+### 1. **لوحة كانبان (Kanban Board)**
+- ثلاث أعمدة: جديد، قيد العمل، منتهي
+- نقل المهام بين الحالات بسهولة
+- تتبع سجل التغييرات الزمني
 
-A few resources to get you started if this is your first Flutter project:
+### 2. **إدارة المهام الهرمية**
+- دعم المهام الفرعية (Sub-tasks)
+- هيكل تسلسلي للمهام
+- ربط المهام الأب والفروع
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 3. **توزيع المهام على الفريق**
+- تعيين المهام لـ 5 أعضاء فريق
+- تتبع إنجازات كل عضو
+- دعم الأدوار المختلفة (مدير، مطور، مصمم، مختبر، محلل)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Task-Project
->>>>>>> 3e5e8ab6265aaa9e7359c93b0912bf7d08477956
+### 4. **نظام الأولويات**
+- ثلاث مستويات أولوية: عالية، متوسطة، منخفضة
+- ترتيب تلقائي حسب الأولوية
+
+### 5. **التقارير والإحصائيات**
+- نسبة إنجاز المشروع الإجمالية
+- إحصائيات الفريق الفردية
+- رسوم بيانية توضيحية
+
+## الخوارزميات المطبقة
+
+### 1. خوارزميات الترتيب (Comparison Sorting)
+**المشكلة:** ترتيب المهام حسب الأولوية والمواعيد النهائية
+
+**الحل المطبق:**
+- خوارزمية Merge Sort - O(n log n)
+- خوارزمية Quick Sort - O(n log n) average
+
+**الميزة:** عرض الأداء الفعلي لكل خوارزمية بالميلي ثانية
+
+### 2. تقنية فرق تسد (Divide and Conquer)
+**المشكلة:** حساب إجمالي الساعات المتوقعة للمشروع بناءً على المهام الفرعية المتداخلة
+
+**الحل المطبق:**
+- دالة استدعاء ذاتي (Recursive) تزور كل عقدة مرة واحدة
+- تعقيد: O(n) حيث n عدد المهام
+- محاكاة شجرة الاستدعاءات (Call Stack)
+
+## هيكل المشروع
+
+```
+lib/
+├── main.dart                 # نقطة الدخول
+├── models/
+│   └── models.dart          # نماذج البيانات
+├── screens/
+│   ├── home_screen.dart      # لوحة التحكم
+│   ├── project_form_screen.dart  # نموذج المشروع
+│   ├── kanban_board_screen.dart  # لوحة كانبان
+│   ├── task_form_screen.dart     # نموذج المهمة
+│   └── reports_screen.dart       # التقارير
+├── providers/
+│   └── project_provider.dart # إدارة الحالة
+├── theme/
+│   └── app_theme.dart        # نظام الألوان والثيم
+├── widgets/
+│   ├── task_card.dart        # بطاقة المهمة
+│   └── navigation_bar.dart   # شريط التنقل
+└── utils/
+    └── extensions.dart       # امتدادات مفيدة
+```
+
+## المتطلبات
+
+- Flutter 3.1.0+
+- Dart 3.1.0+
+- Provider 6.0.0+
+- fl_chart 0.65.0+
+
+## كيفية التثبيت
+
+```bash
+flutter pub get
+flutter run
+```
+
+## الفريق
+
+- أحمد علي - مدير المشروع
+- فاطمة محمد - مطور
+- محمود حسن - مصمم
+- ليلى صالح - مختبر
+- عمر خالد - محلل
+
+## الترخيص
+
+MIT License
